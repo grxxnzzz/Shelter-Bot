@@ -5,6 +5,15 @@ import cataclysmGen
 #for i in range(1, 6):
 #    print(f'#{i}\n' + characterGen.characterCreation())
 
+# print multiple times catabunker for debug
+#for i in range (1,6):
+#    print(f'#{i}\n' + cataclysmGen.cataclysmPlusBunker())
+
+#print(cataclysmGen.cataclysmPlusBunker(), cataclysmGen.bunkerCreation())
+
+for i in range(1, cataclysmGen.cataclysms):
+    print(cataclysmGen.cataclysms[i])
+
 # manual chances enter
 #sum = ''
 #

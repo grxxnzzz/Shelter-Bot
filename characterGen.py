@@ -91,7 +91,7 @@ def characterCreation():
         f'\n:busts_in_silhouette: Пол: {sex} {childFreeSex.lower()}',
         f':calendar_spiral: Возраст: {str(age)}',
         f':bust_in_silhouette: Тело: {bodyCondition.lower()}',
-        f':tools: Проффессия: {proffesion.lower()}, умение: {str(profLevel)} из 5',
+        f':tools: Профессия: {proffesion.lower()}, умение: {str(profLevel)} из 5',
         f':anatomical_heart: Здоровье: {healthCondition.lower()}',
         f':thought_balloon: Хобби: {hobbie.lower()}',
         f':eye: Фобия: {phobia.lower()}',
@@ -102,17 +102,19 @@ def characterCreation():
 
     # beautifying changes • emoji
     ### aging emojis
-    if  (age >= 50) and (sex == ':male_sign:'):
-        createdCharacterPool[0] = f'\n:older_man: Пол: {sex}, {childFreeSex.lower()}'
-    elif (age >= 50) and (sex == ':female_sign:'):
-        createdCharacterPool[0] = f'\n:older_woman: Пол: {sex}, {childFreeSex.lower()}'
-    elif  (age < 50) and (sex == ':male_sign:'):
-        createdCharacterPool[0] = f'\n:man_raising_hand: Пол: {sex}, {childFreeSex.lower()}'
-    elif (age < 50) and (sex == ':female_sign:'):
-        createdCharacterPool[0] = f'\n:woman_raising_hand: Пол: {sex}, {childFreeSex.lower()}'
+    ### if  (age >= 50) and (sex == ':male_sign:'):
+    ###     createdCharacterPool[0] = f'\n:older_man: Пол: {sex}, {childFreeSex.lower()}'
+    ### elif (age >= 50) and (sex == ':female_sign:'):
+    ###     createdCharacterPool[0] = f'\n:older_woman: Пол: {sex}, {childFreeSex.lower()}'
+    ### elif  (age < 50) and (sex == ':male_sign:'):
+    ###     createdCharacterPool[0] = f'\n:man_raising_hand: Пол: {sex}, {childFreeSex.lower()}'
+    ### elif (age < 50) and (sex == ':female_sign:'):
+    ###     createdCharacterPool[0] = f'\n:woman_raising_hand: Пол: {sex}, {childFreeSex.lower()}'
 
     # finishing character creation 
     for i in createdCharacterPool:
         createdCharacter = createdCharacter + i + '\n'
 
     return createdCharacter
+
+# сделать отдельную команду для смены профессии
