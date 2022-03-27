@@ -1,7 +1,7 @@
 from encodings import utf_8
 import random
 
-sexes = (':male_sign: М', ':female_sign: Ж')
+sexes = (':male_sign:', ':female_sign:')
 childFree = (':negative_squared_cross_mark: Чайлдфри', ':white_check_mark: Фертилен', ':sweat_drops: Бык-осеменитель')
 
 profs = ()
@@ -29,6 +29,11 @@ cardsFile = open('cards.txt', 'r', encoding="utf-8")
 for i in cardsFile:
     cards = i.split("$")
 cardsFile.close()
+
+inventoryFile = open('inventory.txt', 'r', encoding="utf-8")
+for i in inventoryFile:
+    inventory = i.split("$")
+inventoryFile.close()
 
 bodyTypes = ("Не может самостоятельно передвигаться из-за ожирения", "Не хватает сил, чтобы перемещаться самостоятельно",
              "Хилое", "Худое", "Стройное", "Мускулистое", "Полное", "Жирное", "Геракл", "Афина")
@@ -58,7 +63,7 @@ def characterCreation():
         bodyCondition = str(bodyCondition[0])
     else:
         bodyCondition = (random.choices(bodyTypes, weights=(1,1,25,25,10,5,25,15,3,3)))
-        bodyCondition = str(bodyCondition[0] + f', {bCL}')
+        bodyCondition = str(bodyCondition[0] + f', :wheelchair: {bCL}')
 
     proffesion = str(random.choice(profs))
     profLevel = random.randrange(0, 5)
@@ -83,7 +88,7 @@ def characterCreation():
 
     # a tuple with character parameters
     createdCharacterPool = [
-        f'\n:busts_in_silhouette: Пол: {sex}, {childFreeSex.lower()}',
+        f'\n:busts_in_silhouette: Пол: {sex} {childFreeSex.lower()}',
         f':calendar_spiral: Возраст: {str(age)}',
         f':bust_in_silhouette: Тело: {bodyCondition.lower()}',
         f':tools: Проффессия: {proffesion.lower()}, умение: {str(profLevel)} из 5',
@@ -96,14 +101,15 @@ def characterCreation():
         f':flower_playing_cards: №2: {card2.lower()}']
 
     # beautifying changes • emoji
-    if  (age >= 50) and (sex == ':male_sign: М'):
-        createdCharacterPool[0] = f'\n:older_man: Пол: {sex}, {childFreeSex}'
-    elif (age >= 50) and (sex == ':female_sign: Ж'):
-        createdCharacterPool[0] = f'\n:older_woman: Пол: {sex}, {childFreeSex}'
-    elif  (age < 50) and (sex == ':male_sign: М'):
-        createdCharacterPool[0] = f'\n:man_raising_hand: Пол: {sex}, {childFreeSex}'
-    elif (age < 50) and (sex == ':female_sign: Ж'):
-        createdCharacterPool[0] = f'\n:woman_raising_hand: Пол: {sex}, {childFreeSex}'
+    ### aging emojis
+    if  (age >= 50) and (sex == ':male_sign:'):
+        createdCharacterPool[0] = f'\n:older_man: Пол: {sex}, {childFreeSex.lower()}'
+    elif (age >= 50) and (sex == ':female_sign:'):
+        createdCharacterPool[0] = f'\n:older_woman: Пол: {sex}, {childFreeSex.lower()}'
+    elif  (age < 50) and (sex == ':male_sign:'):
+        createdCharacterPool[0] = f'\n:man_raising_hand: Пол: {sex}, {childFreeSex.lower()}'
+    elif (age < 50) and (sex == ':female_sign:'):
+        createdCharacterPool[0] = f'\n:woman_raising_hand: Пол: {sex}, {childFreeSex.lower()}'
 
     # finishing character creation 
     for i in createdCharacterPool:

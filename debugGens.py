@@ -2,8 +2,8 @@ import characterGen
 import cataclysmGen
 
 # print multiple times for debug
-for i in range(0, 5):
-    print(characterGen.characterCreation())
+#for i in range(1, 6):
+#    print(f'#{i}\n' + characterGen.characterCreation())
 
 # manual chances enter
 #sum = ''
