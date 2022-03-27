@@ -1,7 +1,7 @@
-from multiprocessing.connection import wait
 from time import sleep
 import discord
 import characterGen
+import cataclysmGen
 
 client = discord.Client()
 
@@ -14,7 +14,6 @@ async def on_ready():
 async def on_message(message):
     if message.author == client.user:
         return
-        
     #if message.content.startswith('$id'):
     #    name = message.author
     #    await message.channel.send('твой id: {0}'.format(name))
