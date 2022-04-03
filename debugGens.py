@@ -31,5 +31,4 @@ import cataclysmGen
 #     sum = str(sum) + '1, '
 # else:
 #     print(sum)
-    
 # print(len(characterGen.phobias))

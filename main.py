@@ -1,4 +1,3 @@
-from multiprocessing.connection import Client
 from time import sleep
 import discord
 import characterGen
