@@ -39,6 +39,12 @@ async def on_message(message):
         await message.channel.send(cataclysmGen.cataclysmPlusBunker())
         await message.channel.send(cataclysmGen.bunkerCreation())
 
+    if message.content.startswith('$катаклизм'):
+        await message.channel.send(cataclysmGen.cataclysmPlusBunker())
+        
+    if message.content.startswith('$бункер'):
+        await message.channel.send(cataclysmGen.bunkerCreation())
+        
     #if message.content.startswith('$hello'):
     #    await message.channel.send('дарова')
     

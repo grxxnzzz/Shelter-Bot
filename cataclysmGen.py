@@ -22,6 +22,14 @@ def bunkerCreation():
     bunkerRefuseTuple = ('в любой момент могут отказать', "и не откажут вработе", "и имеют небольшой шанс на поломку")
     bunkerRepairTuple = ('Все схемы и документация о починке механизмов присутствуют', "Схемы и документация о починке отсутствуют")
     
+    bunkerRoomsTuple = ('Химическая лаборатория', 'Склад с защитной экипировкой', 'Класс-кабинет', 'Столовая', 'Пункт управления', 'Комната отдыха', 'Мастерская', 'Санитарный узел', 'Кухня-столовая', 'Кухня', 'Теплица', 'Архив с секретными данными', 'Оружейная', 'Медкабинет', 'Барьер для животных', 'Гидропонная ферма', 'Грядка')
+    
+    bunkerRoom = str(random.choice(bunkerRoomsTuple))
+    bunkerRoom2 = str(random.choice(bunkerRoomsTuple))
+    
+    while(bunkerRoom == bunkerRoom2):
+        bunkerRoom2 = str(random.choice(bunkerRoomsTuple))
+    
     bunkerArea = int(random.triangular(26, 136, 55))
     bunkerPlaces = int(bunkerArea//13.65)
     
@@ -46,6 +54,10 @@ def bunkerCreation():
     bunkerRepair = str(bunkerRepair[0])
 
     bunkerInventory = str(random.choice(bunkerInventoryTuple))
+    bunkerInventory2 = str(random.choice(bunkerInventoryTuple))
+    
+    while (bunkerInventory == bunkerInventory2):
+        bunkerInventory2 = str(random.choice(bunkerInventoryTuple))
 
     # не исправны → в любой момент могут отказать
     if bunkerLifeSys == bunkerLifeSysTuple[1]:
@@ -53,10 +65,14 @@ def bunkerCreation():
         if bunkerRepair == bunkerRepairTuple[0]:
             bunkerRepair = str(bunkerRepair[0]+', но это бесполезно')
 
-    createdBunkerPool = [f':house_abandoned: Площадь убежища: {bunkerArea}м², :bust_in_silhouette: мест в бункере: {bunkerPlaces}\n', 
-    f'Убежище находится в {bunkerCondition} состоянии, {bunkerDefense}. ', 
-    f'Системы жизнеобеспечения {bunkerLifeSys} и {bunkerAutonomy}, {bunkerRefuse}. {bunkerRepair}.\n' 
-    f':package: В бункере есть: {bunkerInventory}.']
+    createdBunkerPool = [
+    f':house_abandoned: Площадь убежища: {bunkerArea}м², :bust_in_silhouette: мест в бункере: {bunkerPlaces}\n', 
+    f'Убежище находится в {bunkerCondition} состоянии, {bunkerDefense}.', 
+    f'Системы жизнеобеспечения {bunkerLifeSys} и {bunkerAutonomy}, {bunkerRefuse}. {bunkerRepair}.\n\n',
+    f':wrench: Бункер оборудован: {bunkerRoom}, {bunkerRoom2}\n\n',
+    f':package: В бункере есть: {bunkerInventory}.\n'
+    f':package: В бункере есть: {bunkerInventory2}.'
+    ]
 
     createdBunker = ''
     for i in createdBunkerPool:

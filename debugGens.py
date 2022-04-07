@@ -32,3 +32,9 @@ import cataclysmGen
 # else:
 #     print(sum)
 # print(len(characterGen.phobias))
+
+#тест генерации бункера
+#for i in range(1, 10):
+#    print(f'бункер №{i}')
+#    print(cataclysmGen.bunkerCreation())
+#    print()
