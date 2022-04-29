@@ -8,17 +8,18 @@ for i in cataclysmsFile:
 cataclysmsFile.close()
 
 bunkerInventoryFile = open('bunkerInventory.txt', 'r', encoding="utf-8")
-for i in bunkerInventoryFile:
-    bunkerInventoryTuple = i.split("$")
+bunkerInventoryTuple = bunkerInventoryFile.readlines()
 bunkerInventoryFile.close()
+for i in range(len(bunkerInventoryTuple)):
+    bunkerInventoryTuple[i] = bunkerInventoryTuple[i].rstrip('\n')
 
 
 def bunkerCreation():
     
     bunkerConditionTuple = ("хорошем", "плохом", "сносном", "кое-как пригодном", "отличном", "ужасном")
-    bunkerDefenseTuple = ('достаточно защищено', "недостаточно защищено", "недостаточно защищено и, при желании, **враждебные существа и другие выжившие** могут попасть внутрь**", "отлично защищено, *местоположение скрыто*", "отлично защищено, но **местоположение известно другим выжившим**", "защищено","надёжно","ненадёжно", "находится в прекрасном состоянии, *надежно спрятано* и хорошо защищено внутри от недоброжелателей *защитно-герметическими дверями*.")
+    bunkerDefenseTuple = ('достаточно защищено', "недостаточно защищено", "недостаточно защищено и, при желании, **враждебные существа и другие выжившие могут попасть внутрь**", "отлично защищено, *местоположение скрыто*", "отлично защищено, но **местоположение известно другим выжившим**", "защищено","надёжно","ненадёжно", "находится в прекрасном состоянии, *надежно спрятано* и хорошо защищено внутри от недоброжелателей *защитно-герметическими дверями*.")
     bunkerLifeSysTuple = ('в исправности', "не исправны")
-    bunkerAutonomyTuple = ('работают в автономном режиме', "не работают вавтономном режиме")
+    bunkerAutonomyTuple = ('работают в автономном режиме', "не работают в автономном режиме")
     bunkerRefuseTuple = ('в любой момент могут отказать', "и не откажут вработе", "и имеют небольшой шанс на поломку")
     bunkerRepairTuple = ('Все схемы и документация о починке механизмов присутствуют', "Схемы и документация о починке отсутствуют")
     
@@ -67,9 +68,10 @@ def bunkerCreation():
 
     createdBunkerPool = [
     f':house_abandoned: Площадь убежища: {bunkerArea}м², :bust_in_silhouette: мест в бункере: {bunkerPlaces}\n', 
-    f'Убежище находится в {bunkerCondition} состоянии, {bunkerDefense}.', 
+    f'Убежище находится в {bunkerCondition} состоянии, {bunkerDefense}. ', 
     f'Системы жизнеобеспечения {bunkerLifeSys} и {bunkerAutonomy}, {bunkerRefuse}. {bunkerRepair}.\n\n',
-    f':wrench: Бункер оборудован: {bunkerRoom}, {bunkerRoom2}\n\n',
+    f':wrench: Бункер оборудован: {bunkerRoom}\n',
+    f':wrench: Бункер оборудован: {bunkerRoom2}\n\n',
     f':package: В бункере есть: {bunkerInventory}.\n'
     f':package: В бункере есть: {bunkerInventory2}.'
     ]

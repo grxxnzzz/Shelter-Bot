@@ -1,13 +1,13 @@
-from encodings import utf_8
 import random
 
-profs = ()
-phobias = ()
-hobbies = ()
-cards = ()
-inventory = ()
+profs = tuple
+phobias = tuple
+hobbies = tuple
+cards = tuple
+inventory = tuple
 
 # reading data from txt files   
+
 profsFile = open('proffession.txt', 'r', encoding="utf-8")
 for i in profsFile:
     profs = i.split(",")
@@ -24,14 +24,17 @@ for i in hobbiesFile:
 hobbiesFile.close()
 
 cardsFile = open('cards.txt', 'r', encoding="utf-8")
-for i in cardsFile:
-    cards = i.split("$")
+cards = cardsFile.readlines()
 cardsFile.close()
+for i in range(len(cards)):
+    cards[i] = cards[i].rstrip('\n')
 
 inventoryFile = open('inventory.txt', 'r', encoding="utf-8")
-for i in inventoryFile:
-    inventory = i.split("$")
+inventory = inventoryFile.readlines()
 inventoryFile.close()
+for i in range(len(inventory)):
+   inventory[i] =inventory[i].rstrip('\n')
+
 #############################                       
 
 sexes = (':male_sign:', ':female_sign:')
@@ -114,6 +117,6 @@ def characterCreation():
     for i in createdCharacterPool:
         createdCharacter = createdCharacter + i + '\n'
 
-    return createdCharacter
+    return '\n' + createdCharacter + '\n– ---------------- –– ---------------- –\n\n'
 
 # • сделать отдельную команду для смены профессии
