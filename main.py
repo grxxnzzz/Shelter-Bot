@@ -1,5 +1,6 @@
 import time
 import discord
+import asyncio
 import characterGen
 import cataclysmGen
 import instructions
@@ -20,7 +21,6 @@ async def on_ready():
 async def on_message(message):
     
     global username
-    username = message.author
     
     ### bot not reacting on itself messages
     if message.author == bot.user:
@@ -28,6 +28,7 @@ async def on_message(message):
 
     ### explaining rules
     if message.content.startswith('$правила'):
+        username = message.author
         if message.channel.id == shelter_Сhannel.id:
             await shelter_Сhannel.send(instructions.Rules(username))
         else:
@@ -36,6 +37,7 @@ async def on_message(message):
 
     ### character creation 
     if message.content.startswith('$перс'):
+        username = message.author
         realDate = time.localtime(time.time())
 
         await username.send(f'Твой персонаж, {username.mention}! {characterGen.characterCreation()}')
@@ -64,6 +66,15 @@ async def on_message(message):
     if message.content.startswith('$бункер'):
 
         await message.channel.send(cataclysmGen.bunkerCreation())
+
+    ########################################################################
+
+    ### debug purposes
+    if message.content.startswith('$debug'):
+        username = message.author
+        for i in range (0,10):
+            await username.send(f'№{i+1}{characterGen.characterCreation()}')
+            await asyncio.sleep(1)
 
     ########################################################################
 

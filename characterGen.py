@@ -5,13 +5,15 @@ phobias = tuple
 hobbies = tuple
 cards = tuple
 inventory = tuple
+specialties = tuple
 
 # reading data from txt files   
 
 profsFile = open('proffession.txt', 'r', encoding="utf-8")
-for i in profsFile:
-    profs = i.split(",")
+profs = profsFile.readlines()
 profsFile.close()
+for i in range(len(profs)):
+    profs[i]=profs[i].rstrip('\n')
 
 phobiasFile = open('phobias.txt', 'r', encoding="utf-8")
 for i in phobiasFile:
@@ -34,6 +36,12 @@ inventory = inventoryFile.readlines()
 inventoryFile.close()
 for i in range(len(inventory)):
    inventory[i] =inventory[i].rstrip('\n')
+
+specialtiesFile = open('specialties.txt', 'r', encoding="utf-8")
+specialties = specialtiesFile.readlines()
+specialtiesFile.close()
+for i in range(len(specialties)):
+    specialties[i] = specialties[i].rstrip('\n')
 
 #############################                       
 
@@ -82,6 +90,8 @@ def characterCreation():
 
     backpack = str(random.choice(inventory))
 
+    specialty = str(random.choice(specialties))
+
     card1 = str(random.choice(cards))
     card2 = str(random.choice(cards))
 
@@ -97,8 +107,9 @@ def characterCreation():
         f':anatomical_heart: Здоровье: {healthCondition.lower()}',
         f':thought_balloon: Хобби: {hobbie.lower()}',
         f':eye: Фобия: {phobia.lower()}',
-        f':speaking_head: Характер: {trait.lower()}\n',
+        f':speaking_head: Характер: {trait.lower()}',
         f':package: С собой: {backpack.lower()}',
+        f':bookmark: О себе: {specialty.lower()}\n',
         f':flower_playing_cards: №1: {card1.lower()}',
         f':flower_playing_cards: №2: {card2.lower()}']
 
