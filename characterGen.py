@@ -56,7 +56,12 @@ health = ("Здоров", "HIV", "Герпес", "Геморрой", "Нарко
 traits = ("Мерзкий", "Скромный", "Беззрасудный", "Гений", "Маэстро", "Хладнокровный", "Никакущий", "Мечтатель", "Подлый", "Добрый", "Любезный", "Хороший", "Среднестатист", "Человечишка", "Быдло", "Жалкий", "Крутой", "Глупый", "Обаяшка", "Диоген")
 
 
-def characterCreation():
+def characterCreation(profBool):
+    if profBool == True:
+        proffesion = str(random.choice(profs))
+        profLevel = random.randrange(0, 5)
+        return f'{proffesion}, умение: {profLevel} из 5'
+
     createdCharacter = ''
 
     sex = random.choice(sexes)
